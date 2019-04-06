@@ -27,7 +27,7 @@ var ref = admin.database().ref("airCon");
 
 ref.on("value", function(snapshot) {
   console.log(snapshot.val());
-  if (snapshot.val()){
+  if (snapshot.val() == "true"){
     shell.exec(' ~/MarcusWork/turn_on_aircon.sh')
     console.log("Turning on");
   } else {
