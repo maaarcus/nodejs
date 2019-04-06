@@ -95,7 +95,9 @@ async function main() {
 var start = Date.now
 
 while (1){
-    if ( Date.now - start > 5000){
+    console.log(start)
+    console.log(Date.now)
+    if ( (Date.now - start) > 5000){
     console.log(Date.now - start)
     start = Date.now;
     main();
