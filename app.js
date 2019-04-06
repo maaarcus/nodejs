@@ -89,18 +89,18 @@ async function main() {
     console.log(extractTemp(result.toString()) + '===' + extractHumid(result.toString()));
     updateFirebase(extractTemp(result.toString()),extractHumid(result.toString()));
     //sleep(10000);
-  main();
+  //main();
 }
 
 var start
 
 function loop() {
-  setTimeout(function() {
-	  start = Date.now();
-    console.log(start);
+  if (start - Date.now > 5000){
+    console.log(start - Date.now)
+    start = Date.now;
     main();
-    loop();
-  }, 5000); 
+  }
+  loop();
 }
 
 loop();
