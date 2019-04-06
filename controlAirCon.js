@@ -27,7 +27,11 @@ var ref = admin.database().ref("airCon");
 
 ref.on("value", function(snapshot) {
   console.log(snapshot.val());
-  shell.exec(' ~/MarcusWork/turn_on_aircon.sh')
+  if (snapshot.val()){
+    shell.exec(' ~/MarcusWork/turn_on_aircon.sh')
+  } else {
+    shell.exec(' ~/MarcusWork/turn_off_aircon.sh')
+  }
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
 });
