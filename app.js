@@ -92,8 +92,12 @@ async function main() {
   main();
 }
 
+var start
+
 function loop() {
   setTimeout(function() {
+	  start = Date.now();
+    console.log(start);
     main();
     loop();
   }, 5000); 
