@@ -95,8 +95,8 @@ async function main() {
 function loop() {
   setTimeout(function() {
     main();
-  }, 5000);
-  loop();
+    loop();
+  }, 5000); 
 }
 
 loop();
