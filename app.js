@@ -94,16 +94,14 @@ async function main() {
 
 var start
 
-function loop() {
-  if (start - Date.now > 5000){
+while (1){
+	  if (start - Date.now > 5000){
     console.log(start - Date.now)
     start = Date.now;
     main();
   }
-  loop();
 }
 
-loop();
 
 	
 
