@@ -83,12 +83,14 @@ function extractHumid(data){
 
 
 async function main() {
-  console.log('calling');
-  var result = await getTempHumid();
-  console.log(result);
-  console.log(extractTemp(result.toString()) + '===' + extractHumid(result.toString()));
-  updateFirebase(extractTemp(result.toString()),extractHumid(result.toString()));
-  sleep(10000);
+  setTimeout(function() {
+    console.log('calling');
+    var result = await getTempHumid();
+    console.log(result);
+    console.log(extractTemp(result.toString()) + '===' + extractHumid(result.toString()));
+    updateFirebase(extractTemp(result.toString()),extractHumid(result.toString()));
+    //sleep(10000);
+  }, 5000);
   main();
 }
 
