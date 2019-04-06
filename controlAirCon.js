@@ -29,8 +29,10 @@ ref.on("value", function(snapshot) {
   console.log(snapshot.val());
   if (snapshot.val()){
     shell.exec(' ~/MarcusWork/turn_on_aircon.sh')
+    console.log("Turning on");
   } else {
     shell.exec(' ~/MarcusWork/turn_off_aircon.sh')
+    console.log("Turning off");
   }
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
