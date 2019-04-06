@@ -24,7 +24,8 @@ var ref = admin.database().ref("airCon");
 
 
 
-ref.on("child_changed", function(snapshot) {
-var airConStatus = snapshot.val();
-console.log("The air con is now: " + airConStatus.turn_on);
+ref.on("value", function(snapshot) {
+  console.log(snapshot.val());
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
 });
