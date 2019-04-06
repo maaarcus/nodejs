@@ -22,20 +22,18 @@ console.log("HiHIHI");
 
 var ref = admin.database().ref("airCon");
 
-while (1) {
-  ref.on("child_changed", function(snapshot) {
+
+function getData(){
+    ref.on("child_changed", function(snapshot) {
     var airConStatus = snapshot.val();
     console.log("The air con is now: " + airConStatus.turn_on);
   });
-    
-    var userRef = admin.database().ref();
-    userRef
-    .child('airCon')
-    .child('turn_on')
-    .once('value').then(function(snapshot) {
-        var result = snapshot.val();
-        return result;
-
-        }
-        );
 }
+async function checkForChanges(){
+    await 
+}
+
+ref.on("child_changed", function(snapshot) {
+var airConStatus = snapshot.val();
+console.log("The air con is now: " + airConStatus.turn_on);
+});
