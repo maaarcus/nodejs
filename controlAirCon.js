@@ -19,3 +19,12 @@ admin.initializeApp({
 });
 
 console.log("HiHIHI");
+
+var ref = admin.database().ref("airCon");
+
+while (1) {
+  ref.on("child_changed", function(snapshot) {
+    var airConStatus = snapshot.val();
+    console.log("The air con is now: " + airConStatus.turn_on);
+  });
+}
