@@ -9,6 +9,7 @@
   "author": "Marcus",
   "license": "ISC",
   "dependencies": {
-    "firebase-admin": "^5.12.1"
+    "firebase-admin": "^5.12.1",
+    "python-shell": "^1.0.6"
   }
 }
