@@ -27,12 +27,17 @@ var ref = admin.database().ref("airCon");
 
 ref.on("value", function(snapshot) {
   console.log(snapshot.val());
-  if (snapshot.val().turn_on){
-    shell.exec(' ~/MarcusWork/turn_on_aircon.sh')
-    console.log("Turning on");
-  } else {
-    shell.exec(' ~/MarcusWork/turn_off_aircon.sh')
-    console.log("Turning off");
+  var command = snapshot.val().command
+  if ( command == "cool_24"){
+    shell.exec('irsend SEND_ONCE gree cool_24')
+  } else if ( command == "off" ) {
+    shell.exec('irsend SEND_ONCE gree off')
+  } else if ( command == "dry_25" ) {
+      shell.exec('irsend SEND_ONCE gree dry_25')
+  } else if ( command == "cool_25_fan1" ) {
+      shell.exec('irsend SEND_ONCE gree cool_25_fan1')
+  } else if ( command == "cool_25_fan2" ) {
+      shell.exec('irsend SEND_ONCE gree cool_25_fan2')
   }
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
