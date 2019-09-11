@@ -1,6 +1,10 @@
 const http = require('http');
 const shell = require('shelljs');
 
+var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
+var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+
 let {PythonShell} = require('python-shell')
 var admin = require("firebase-admin");
 
@@ -27,6 +31,8 @@ var ref = admin.database().ref("airCon");
 
 ref.on("value", function(snapshot) {
   console.log(snapshot.val());
+  LED.writeSync(1);
+  setTimeout(LED.writeSync(0), 500);
   var command = snapshot.val().command
   if ( command == "cool_24"){
     shell.exec('irsend SEND_ONCE gree cool_24')
