@@ -6,7 +6,7 @@ var LED = new Gpio(21, 'out'); //use GPIO pin 4, and specify that it is output
 
 let {PythonShell} = require('python-shell')
 var admin = require("firebase-admin");
-
+LED.writeSync(0);
 var options = {
     mode: 'text',
     pythonPath: '/usr/bin/python',
