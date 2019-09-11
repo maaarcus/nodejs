@@ -27,11 +27,14 @@ console.log("HiHIHI");
 var ref = admin.database().ref("airCon");
 
 
+function endBlink() { //function to stop blinking
+  LED.writeSync(0); // Turn LED off
+}
 
 ref.on("value", function(snapshot) {
   console.log(snapshot.val());
   LED.writeSync(1);
-  setTimeout(LED.writeSync(0), 500);
+  setTimeout(endBlink, 500);
   var command = snapshot.val().command
   if ( command == "cool_24"){
     shell.exec('irsend SEND_ONCE gree cool_24')
