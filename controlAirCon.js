@@ -6,7 +6,7 @@ var LED = new Gpio(21, 'out'); //use GPIO pin 4, and specify that it is output
 
 let {PythonShell} = require('python-shell')
 var admin = require("firebase-admin");
-LED.writeSync(0);
+
 var options = {
     mode: 'text',
     pythonPath: '/usr/bin/python',
@@ -28,12 +28,12 @@ var ref = admin.database().ref("airCon");
 
 
 function endBlink() { //function to stop blinking
-  LED.writeSync(0); // Turn LED off
+  LED.writeSync(1); // Turn LED off
 }
 
 ref.on("value", function(snapshot) {
   console.log(snapshot.val());
-  LED.writeSync(1);
+  LED.writeSync(0);
   setTimeout(endBlink, 500);
   var command = snapshot.val().command
   if ( command == "cool_24"){
