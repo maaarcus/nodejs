@@ -2,7 +2,7 @@ const http = require('http');
 const shell = require('shelljs');
 
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
+var LED = new Gpio(21, 'out'); //use GPIO pin 4, and specify that it is output
 
 let {PythonShell} = require('python-shell')
 var admin = require("firebase-admin");
